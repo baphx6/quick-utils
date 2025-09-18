@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import re
 import requests
@@ -45,7 +46,7 @@ def main():
             for line in f:
                 binary = Path(line.strip())
                 check(base_url, binary.name, mode)
-    except UnicodeDecodeError:
+    except (UnicodeDecodeError, FileNotFoundError):
         # print(f"{binaries} is not a text file, treating as single binary")
         check(base_url, binaries.name, mode)
 
